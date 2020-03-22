@@ -2,6 +2,7 @@
     export let value
 
     export let onKeyUp
+    export let onKeyPress
 </script>
 
 <style>
@@ -14,4 +15,4 @@
     }
 </style>
 
-<input type="text" class="task-description" bind:value placeholder="What's on your mind ..." on:keyup={onKeyUp} />
+<input type="text" class="task-description" bind:value placeholder="What's on your mind ..." on:keyup={onKeyUp} on:keypress={onKeyPress} />

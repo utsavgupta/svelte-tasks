@@ -14,17 +14,23 @@
 		buttonDisabled = (currentTask === "")
 	}
 
-	const displayAlert = () => {
+	const addTask = () => {
 		var date = new Date()
 
 		tasks[tasks.length] = currentTask + " (" + date.getDate() + "." + (date.getMonth()+1) + "." + date.getFullYear() + ")"
 		currentTask = "";
 		textChanged()
 	}
+	
+    const handleKeyPress = (e) => {
+        if (e.code === "Enter" && currentTask != "") {
+			addTask()
+		}
+    }
 </script>
 
 <main>
-	<TextBox bind:value={currentTask} onKeyUp={textChanged} />&nbsp;<Button caption="Add Note" handleClick={displayAlert} bind:disabled={buttonDisabled} /><br />
+	<TextBox bind:value={currentTask} onKeyUp={textChanged} onKeyPress={handleKeyPress} />&nbsp;<Button caption="Add Note" handleClick={addTask} bind:disabled={buttonDisabled} /><br />
 	<ListView bind:items={tasks} />
 </main>
 
